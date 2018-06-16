@@ -25,8 +25,9 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function(req,res){
+  let ip = req.header('x-forwarded-for').slice(0,13)
   console.log(JSON.stringify(req.headers));
-  res.send({Working: req.header})      
+  res.send({Working: ip})      
 })
 
 // listen for requests :)
